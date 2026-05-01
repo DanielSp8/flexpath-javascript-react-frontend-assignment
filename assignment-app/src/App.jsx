@@ -1,13 +1,29 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import ErrorBoundary from "./ErrorBoundary";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        {/* <p> tag is a placeholder, You'll need to change the tag/component type later*/}
-        <p className="navbar-brand ms-4 nav-link">User Behavior Data</p>
-      </nav>
-      <hr />
+      <ErrorBoundary>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          <Link to="/" className="navbar-brand ms-4 nav-link">
+            User Behavior Data
+          </Link>
+          <Link to="/Search" className="navbar-brand ms-4 nav-link">
+            Search Through Dataset
+          </Link>
+        </nav>
+        <hr />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Search" element={<Search />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ErrorBoundary>
     </div>
   );
 }
