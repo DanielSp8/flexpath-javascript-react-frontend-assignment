@@ -1,3 +1,9 @@
+import SearchOptions from "../components/SearchOptions";
+
 export default function Search() {
-  return <div>Search</div>;
+  return (
+    <div>
+      <SearchOptions />
+    </div>
+  );
 }

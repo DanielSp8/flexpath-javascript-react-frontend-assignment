@@ -13,8 +13,8 @@ function App() {
           <Link to="/" className="navbar-brand ms-4 nav-link">
             User Behavior Data
           </Link>
-          <Link to="/Search" className="navbar-brand ms-4 nav-link">
-            Search Through Dataset
+          <Link to="/Search" className="navbar-brand ms-3 nav-link">
+            <span className="navbar-text h7">Search Through Dataset</span>
           </Link>
         </nav>
         <hr />
