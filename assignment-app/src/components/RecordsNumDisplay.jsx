@@ -1,14 +1,17 @@
-export default function RecordsNumDisplay(loading, recordsNum, errorMessage) {
-  if (errorMessage)
-    return (
-      <div className="alert alert-danger" role="alert">
-        {errorMessage}
-      </div>
-    );
-
-  if (loading) return <div>Loading...</div>;
-
-  if (recordsNum === 0) return <div>No Records to Display</div>;
-
-  return <div>Displaying {recordsNum} Records</div>;
+export default function RecordsNumDisplay({
+  isLoading,
+  recordsNum = 0,
+  errorMessage,
+}) {
+  return (
+    <div>
+      {errorMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && <div>Displaying {recordsNum} Records</div>}
+    </div>
+  );
 }

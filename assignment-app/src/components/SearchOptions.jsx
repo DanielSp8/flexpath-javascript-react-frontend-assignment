@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
+import RecordsNumDisplay from "./RecordsNumDisplay";
 
 export default function SearchOptions() {
+  const [isLoading, setIsLoading] = useState(false);
   const [filterDrop, setFilterDrop] = useState("model");
   const [filterInput, setFilterInput] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [data, setData] = useState(null);
 
-  const { data, loading, errorMessage } = useFetch(filterDrop, filterInput);
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
+
+  const { fetchData } = useFetch(
+    filterDrop,
+    filterInput,
+    setIsLoading,
+    setErrorMessage,
+    setData,
+  );
 
   const handleDropChange = (event) => {
     setFilterDrop(event.target.value);
@@ -48,13 +67,19 @@ export default function SearchOptions() {
               type="button"
               className="btn text-center form-control border"
               style={{ width: "26rem" }}
-              disabled={!loading}
+              disabled={isLoading}
+              onClick={fetchData}
             >
               Search
             </button>
           </div>
         </div>
       </div>
+      <RecordsNumDisplay
+        isLoading={isLoading}
+        recordsNum={data.length || 0}
+        errorMessage={errorMessage}
+      />
     </div>
   );
 }
