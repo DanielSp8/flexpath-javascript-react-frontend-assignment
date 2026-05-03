@@ -7,7 +7,7 @@ export default function SearchOptions() {
   const [filterDrop, setFilterDrop] = useState("model");
   const [filterInput, setFilterInput] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (errorMessage) {
