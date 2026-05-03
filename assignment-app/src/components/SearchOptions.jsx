@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
 
 export default function SearchOptions() {
   const [filterDrop, setFilterDrop] = useState("model");
   const [filterInput, setFilterInput] = useState("");
+
+  const { data, loading, errorMessage } = useFetch(filterDrop, filterInput);
 
   const handleDropChange = (event) => {
     setFilterDrop(event.target.value);
@@ -45,7 +48,7 @@ export default function SearchOptions() {
               type="button"
               className="btn text-center form-control border"
               style={{ width: "26rem" }}
-              // disabled...
+              disabled={!loading}
             >
               Search
             </button>
