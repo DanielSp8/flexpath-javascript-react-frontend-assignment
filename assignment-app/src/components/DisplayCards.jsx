@@ -1,6 +1,6 @@
 import DataCard from "./DataCard";
 
-export default function DisplayDataCards(data) {
+export default function DisplayCards(data) {
   return (
     <div>
       <DataCard id={1} data={data} title={"App Usage Time (min/day)"} />
