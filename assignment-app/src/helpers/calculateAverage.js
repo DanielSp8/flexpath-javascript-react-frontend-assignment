@@ -1,1 +1,0 @@
-// This helper function should receive an array of numbers and return an average number of them to DataCard.jsx

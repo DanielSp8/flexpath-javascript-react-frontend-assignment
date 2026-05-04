@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import RecordsNumDisplay from "./RecordsNumDisplay";
+import DisplayDataCards from "./DisplayDataCards";
 
 export default function SearchOptions() {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,6 +81,8 @@ export default function SearchOptions() {
         recordsNum={data.length || 0}
         errorMessage={errorMessage}
       />
+      {console.log(data.length)}
+      <DisplayDataCards data={data} />
     </div>
   );
 }
