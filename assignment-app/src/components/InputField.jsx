@@ -15,7 +15,7 @@ export default function InputField({ state, dispatch }) {
         aria-label="input field"
         placeholder="Search by Keyword"
         type="text"
-        value={state.InputFieldValue}
+        value={state.inputFieldValue}
         onChange={handleInputChange}
         style={{ width: "26rem" }}
       />

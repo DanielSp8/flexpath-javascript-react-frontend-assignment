@@ -16,7 +16,12 @@ function reducer(state, action) {
         ...state,
         isLoading: false,
       };
-    case "UPDATE_DROPDOWN_BOX": {
+      case "SET_ERROR_MESSAGE":
+        return {
+          ...state,
+          errorMessage: action.nextMessage,
+        }
+      case "UPDATE_DROPDOWN_BOX": {
       return {
         ...state,
         dropdownValue: action.nextValue,
