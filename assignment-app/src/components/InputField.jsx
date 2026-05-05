@@ -2,8 +2,7 @@ export default function InputField({ state, dispatch }) {
   const handleInputChange = (event) => {
     dispatch({
       type: "UPDATE_INPUT_FIELD",
-      field: "inputFieldValue",
-      value: event.target.value,
+      payload: event.target.value,
     });
   };
 

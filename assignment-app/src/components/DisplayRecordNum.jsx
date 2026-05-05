@@ -1,13 +1,15 @@
 export default function DisplayRecordNum({ state }) {
   return (
-    <div>
+    <div className="mt-2">
       {state.errorMessage && (
         <div className="alert alert-danger" role="alert">
           {state.errorMessage}
         </div>
       )}
-      {state.isLoading && <p>Loading...</p>}
-      {!state.isLoading && <div>Displaying {state.recordNumber} Records</div>}
+      {(state.isLoading && <p>Loading...</p>) ||
+        (state.receivedData.length === 0 && <p>No Records to Display</p>) || (
+          <p>Displaying {state.receivedData.length} Records</p>
+        )}
     </div>
   );
 }

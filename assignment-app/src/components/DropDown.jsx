@@ -2,7 +2,7 @@ export default function DropDown({ state, dispatch }) {
   const handleDropChange = (event) => {
     dispatch({
       type: "UPDATE_DROPDOWN_BOX",
-      nextValue: event.target.value,
+      payload: event.target.value,
     });
   };
 

@@ -16,39 +16,27 @@ function reducer(state, action) {
         ...state,
         isLoading: false,
       };
-      case "SET_ERROR_MESSAGE":
-        return {
-          ...state,
-          errorMessage: action.nextMessage,
-        }
-      case "UPDATE_DROPDOWN_BOX": {
+    case "SET_ERROR_MESSAGE":
       return {
         ...state,
-        dropdownValue: action.nextValue,
+        errorMessage: action.payload,
+      };
+    case "UPDATE_DROPDOWN_BOX": {
+      return {
+        ...state,
+        dropdownValue: action.payload,
       };
     }
     case "UPDATE_INPUT_FIELD": {
       return {
         ...state,
-        inputFieldValue: action.nextField,
+        inputFieldValue: action.payload,
       };
     }
-    case "RECEIVE_DATA": {
+    case "UPDATE_DATA_PLUS_OTHER_FIELDS": {
       return {
         ...state,
-        receivedData: action.payload,
-      };
-    }
-    case "UPDATE_RECORD_NUMBER": {
-      return {
-        ...state,
-        recordNumber: action.updateRecordNumber,
-      };
-    }
-    case "UPDATE_CARD_FIELDS": {
-      return {
-        ...state,
-        cardFields: action.updateCardsInfo,
+        ...action.payload,
       };
     }
     case "RESET":
@@ -87,7 +75,7 @@ export default function Search() {
         <div className="container mt-4">
           <InputField state={state} dispatch={dispatch} />
           <SearchButton state={state} dispatch={dispatch} />
-          <DisplayRecordNum state={state} dispatch={dispatch} />
+          <DisplayRecordNum state={state} />
         </div>
       </div>
     </div>
