@@ -1,4 +1,8 @@
 import { useEffect } from "react";
+import {
+  giveAverageMinutes,
+  giveMedianMinutes,
+} from "../helpers/cardCalculations";
 
 export function useFetch({ state, dispatch }) {
   useEffect(() => {
@@ -24,12 +28,14 @@ export function useFetch({ state, dispatch }) {
         `/api/data/search?filterType=${state.dropdownValue}&keyword=${state.inputFieldValue}`,
       );
       if (!response.ok) throw new Error("Network response was not ok");
-      const dataReceived = await response.json();
+      const data = await response.json();
       dispatch({
         type: "UPDATE_DATA_PLUS_OTHER_FIELDS",
         payload: {
-          receivedData: dataReceived,
-          recordNumber: dataReceived.length,
+          receivedData: data,
+          recordNumber: data.length,
+          avgMinsAppUsage: giveAverageMinutes(data),
+          medianMinsAppUsage: giveMedianMinutes(data),
         },
       });
       console.log(state.receivedData);

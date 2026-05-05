@@ -3,6 +3,7 @@ import DropDown from "../components/DropDown";
 import InputField from "../components/InputField";
 import SearchButton from "../components/SearchButton";
 import DisplayRecordNum from "../components/DisplayRecordNum";
+import DisplayCards from "../components/DisplayCards";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -53,16 +54,14 @@ const initialState = {
   inputFieldValue: "",
   receivedData: [],
   recordNumber: 0,
-  cardFields: {
-    avgMinsAppUsage: 0,
-    medianMinsAppUsage: 0,
-    screenTimeAvg: 0,
-    screenTimeMedian: 0,
-    avgNumApps: 0,
-    medianNumApps: 0,
-    avgAge: 0,
-    medianAge: 0,
-  },
+  avgMinsAppUsage: 0,
+  medianMinsAppUsage: 0,
+  screenTimeAvg: 0,
+  screenTimeMedian: 0,
+  avgNumApps: 0,
+  medianNumApps: 0,
+  avgAge: 0,
+  medianAge: 0,
 };
 
 export default function Search() {
@@ -76,6 +75,7 @@ export default function Search() {
           <InputField state={state} dispatch={dispatch} />
           <SearchButton state={state} dispatch={dispatch} />
           <DisplayRecordNum state={state} />
+          <DisplayCards state={state} />
         </div>
       </div>
     </div>
