@@ -46,7 +46,7 @@ export const giveOnScreenTimeAvg = (data) => {
 export const giveOnScreenTimeMedian = (data) => {
   if (data.length === 0) return 0;
   const sortedData = data
-    .map((item) => parseInt(item["Screen On Time (hours/day)"]))
+    .map((item) => parseFloat(item["Screen On Time (hours/day)"]))
     .sort((a, b) => a - b);
   const mid = Math.floor(sortedData.length / 2);
   // Ternary expression:  if the data given is not even, return the middle of the array
