@@ -2,6 +2,12 @@ import { useEffect } from "react";
 import {
   giveAverageMinutes,
   giveMedianMinutes,
+  giveOnScreenTimeAvg,
+  giveOnScreenTimeMedian,
+  giveNumOfAppsInstalledAvg,
+  giveNumOfAppsInstalledMedian,
+  giveAgeAvg,
+  giveAgeMedian,
 } from "../helpers/cardCalculations";
 
 export function useFetch({ state, dispatch }) {
@@ -36,6 +42,12 @@ export function useFetch({ state, dispatch }) {
           recordNumber: data.length,
           avgMinsAppUsage: giveAverageMinutes(data),
           medianMinsAppUsage: giveMedianMinutes(data),
+          screenTimeAvg: giveOnScreenTimeAvg(data),
+          screenTimeMedian: giveOnScreenTimeMedian(data),
+          avgNumApps: giveNumOfAppsInstalledAvg(data),
+          medianNumApps: giveNumOfAppsInstalledMedian(data),
+          avgAge: giveAgeAvg(data),
+          medianAge: giveAgeMedian(data),
         },
       });
       console.log(state.receivedData);

@@ -1,6 +1,6 @@
 import { displayType } from "../helpers/displayType";
 
-export default function DataCard({ id, state, title }) {
+export default function DataCard({ id, avg, median, title }) {
   return (
     <div className="col">
       <div className="card">
@@ -9,10 +9,10 @@ export default function DataCard({ id, state, title }) {
             {title}
           </h5>
           <p className="card-text text-center">
-            Average - {state.avgMinsAppUsage} {displayType(title)}
+            Average - {avg} {displayType(title)}
           </p>
           <p className="card-text text-center">
-            Median - {state.medianMinsAppUsage} {displayType(title)}
+            Median - {median} {displayType(title)}
           </p>
         </div>
       </div>
