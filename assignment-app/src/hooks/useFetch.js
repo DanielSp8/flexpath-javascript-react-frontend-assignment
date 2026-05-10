@@ -17,8 +17,7 @@ export function useFetch({ state, dispatch }) {
         dispatch(
           {
             type: "SET_ERROR_MESSAGE",
-            field: "errorMessage",
-            value: null,
+            payload: null,
           },
           5000,
         );
@@ -31,7 +30,7 @@ export function useFetch({ state, dispatch }) {
     dispatch({ type: "SET_LOADING_TRUE" });
     try {
       const response = await fetch(
-        `/api/data/search?filterType=${state.dropdownValue}&keyword=${state.inputFieldValue}`,
+        `/api/ata/search?filterType=${state.dropdownValue}&keyword=${state.inputFieldValue}`,
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
@@ -54,7 +53,7 @@ export function useFetch({ state, dispatch }) {
     } catch (error) {
       dispatch({
         type: "SET_ERROR_MESSAGE",
-        payload: error,
+        payload: error.message,
       });
     } finally {
       dispatch({ type: "SET_LOADING_FALSE" });

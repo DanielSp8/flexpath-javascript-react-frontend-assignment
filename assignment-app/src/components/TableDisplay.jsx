@@ -1,9 +1,5 @@
-// The code in this file needs to be worked on much...
-
-import React from "react";
-
 export default function TableDisplay({
-  dataRetrieved,
+  receivedData,
   isLoading,
   errorMessage,
 }) {
@@ -28,7 +24,7 @@ export default function TableDisplay({
             </tr>
           </thead>
           <tbody>
-            {dataRetrieved.map((item) => (
+            {receivedData.map((item) => (
               <tr key={item["User ID"]}>
                 {Object.entries(item).map(([key, value], index) => (
                   <td key={`${item[key]}-${index}-${value}`}>{value}</td>

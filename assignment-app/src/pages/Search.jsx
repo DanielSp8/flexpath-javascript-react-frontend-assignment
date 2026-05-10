@@ -4,6 +4,7 @@ import InputField from "../components/InputField";
 import SearchButton from "../components/SearchButton";
 import DisplayRecordNum from "../components/DisplayRecordNum";
 import DisplayCards from "../components/DisplayCards";
+import TableDisplay from "../components/TableDisplay";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -76,6 +77,11 @@ export default function Search() {
           <SearchButton state={state} dispatch={dispatch} />
           <DisplayRecordNum state={state} />
           <DisplayCards state={state} />
+          <TableDisplay
+            receivedData={state.receivedData}
+            isLoading={state.isLoading}
+            errorMessage={state.errorMessage}
+          />
         </div>
       </div>
     </div>
