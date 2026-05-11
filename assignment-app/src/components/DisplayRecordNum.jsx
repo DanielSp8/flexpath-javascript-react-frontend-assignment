@@ -2,7 +2,7 @@ export default function DisplayRecordNum({ state }) {
   return (
     <div className="mt-2">
       {state.errorMessage && (
-        <div className="alert alert-danger" role="alert">
+        <div className="text-danger" role="alert">
           {state.errorMessage}
         </div>
       )}
