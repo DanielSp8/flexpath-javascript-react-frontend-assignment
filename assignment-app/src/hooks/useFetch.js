@@ -14,23 +14,21 @@ export function useFetch({ state, dispatch }) {
   useEffect(() => {
     if (state.errorMessage) {
       const timer = setTimeout(() => {
-        dispatch(
-          {
-            type: "SET_ERROR_MESSAGE",
-            payload: null,
-          },
-          5000,
-        );
-        return () => clearTimeout(timer);
-      }, [state.errorMessage]);
+        dispatch({
+          type: "SET_ERROR_MESSAGE",
+          payload: null,
+        });
+      }, 5000);
+
+      return () => clearTimeout(timer);
     }
-  });
+  }, [state.errorMessage]);
 
   async function fetchData() {
     dispatch({ type: "SET_LOADING_TRUE" });
     try {
       const response = await fetch(
-        `/api/ata/search?filterType=${state.dropdownValue}&keyword=${state.inputFieldValue}`,
+        `/api/data/search?filterType=${state.dropdownValue}&keyword=${state.inputFieldValue}`,
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
@@ -49,7 +47,6 @@ export function useFetch({ state, dispatch }) {
           medianAge: giveAgeMedian(data),
         },
       });
-      console.log(state.receivedData);
     } catch (error) {
       dispatch({
         type: "SET_ERROR_MESSAGE",

@@ -1,11 +1,6 @@
-export default function TableDisplay({
-  receivedData,
-  isLoading,
-  errorMessage,
-}) {
+export default function TableDisplay({ receivedData, isLoading }) {
   return (
     <>
-      {errorMessage && <p className="text-danger">Error: {errorMessage}</p>}
       {(!isLoading && (
         <table className="table table-striped">
           <thead>
