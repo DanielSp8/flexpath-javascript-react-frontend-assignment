@@ -18,7 +18,6 @@ export default function Search({ state, dispatch }) {
           <TableDisplay
             receivedData={state.receivedData}
             isLoading={state.isLoading}
-            errorMessage={state.errorMessage}
           />
         </div>
       </div>

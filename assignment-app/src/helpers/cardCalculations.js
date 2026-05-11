@@ -17,7 +17,8 @@ export const giveMedianMinutes = (data) => {
     .map((item) => parseInt(item["App Usage Time (min/day)"]))
     .sort((a, b) => a - b);
   const middle = Math.floor(sortedData.length / 2);
-
+  // Below - Ternary expression:  if the data length given is not even, return the middle of the array
+  //   Otherwise, return the center (median) by calculating the two center numbers and dividing by 2.
   return sortedData.length % 2 !== 0
     ? new Intl.NumberFormat("en-US", {
         style: "decimal",
@@ -49,8 +50,6 @@ export const giveOnScreenTimeMedian = (data) => {
     .map((item) => parseFloat(item["Screen On Time (hours/day)"]))
     .sort((a, b) => a - b);
   const mid = Math.floor(sortedData.length / 2);
-  // Ternary expression:  if the data given is not even, return the middle of the array
-  //   Otherwise, return the center (median) by calculating the two center numbers and dividing by 2.
   return sortedData.length % 2 !== 0
     ? sortedData[mid]
     : (sortedData[mid - 1] + sortedData[mid]) / 2;
